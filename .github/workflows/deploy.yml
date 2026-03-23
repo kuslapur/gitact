@@ -32,8 +32,10 @@ jobs:
       run: docker build -t my-app .
 
     - name: Tag Image
-            IMAGE_TAG=${{ github.sha }}
-      run: docker tag my-app:latest ${{ secrets.ECR_REPOSITORY }}:$IMAGE_TAG
+      env:
+        IMAGE_TAG=${{ github.sha }}
+      run: 
+        docker tag my-app:latest ${{ secrets.ECR_REPOSITORY }}:$IMAGE_TAG
       
 
     - name: Push Image
