@@ -32,10 +32,12 @@ jobs:
       run: docker build -t my-app .
 
     - name: Tag Image
-      run: docker tag my-app:latest ${{ secrets.ECR_REPOSITORY }}:latest
+            IMAGE_TAG=${{ github.sha }}
+      run: docker tag my-app:latest ${{ secrets.ECR_REPOSITORY }}:$IMAGE_TAG
+      
 
     - name: Push Image
-      run: docker push ${{ secrets.ECR_REPOSITORY }}:latest
+      run: docker push ${{ secrets.ECR_REPOSITORY }}:$IMAGE_TAG
 
     - name: Configure kubectl
       run: |
