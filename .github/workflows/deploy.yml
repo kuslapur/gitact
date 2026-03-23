@@ -11,6 +11,8 @@ env:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    env:
+      IMAGE_TAG: ${{ github.sha }}
 
     steps:
     - name: Checkout Code
@@ -32,8 +34,6 @@ jobs:
       run: docker build -t my-app .
 
     - name: Tag Image
-      env:
-        IMAGE_TAG: ${{ github.sha }}
       run: 
         docker tag my-app:latest ${{ secrets.ECR_REPOSITORY }}:$IMAGE_TAG
       
