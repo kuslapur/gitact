@@ -33,7 +33,7 @@ jobs:
 
     - name: Tag Image
       env:
-        IMAGE_TAG=${{ github.sha }}
+        IMAGE_TAG: ${{ github.sha }}
       run: 
         docker tag my-app:latest ${{ secrets.ECR_REPOSITORY }}:$IMAGE_TAG
       
