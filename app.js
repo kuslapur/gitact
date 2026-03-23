@@ -4,7 +4,7 @@ const app = express();
 const PORT = 3000;
 
 app.get('/', (req, res) => {
-  res.send('🚀 Hello from EKS DevOps Pipeline!');
+  res.send('"Version 2 deployed 🚀"');
 });
 
 app.get('/health', (req, res) => {
