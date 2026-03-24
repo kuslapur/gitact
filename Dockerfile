@@ -3,7 +3,9 @@ FROM node:18
 WORKDIR /app
 
 COPY package*.json ./
-RUN npm ci
+
+# safer fallback if lock not present
+RUN npm install
 
 COPY . .
 
