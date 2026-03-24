@@ -1,16 +1,8 @@
-const express = require('express');
-
+const express = require("express");
 const app = express();
-const PORT = 3000;
 
-app.get('/', (req, res) => {
-  res.send('🚀 Hello from EKS DevOps Pipeline!');
+app.get("/", (req, res) => {
+  res.send("Hello from EKS 🚀");
 });
 
-app.get('/health', (req, res) => {
-  res.json({ status: 'OK' });
-});
-
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
+app.listen(3000, () => console.log("Running on 3000"));
