@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+      - name: backend
+        image: 470224090978.dkr.ecr.ap-south-1.amazonaws.com/backend
+        ports:
+        - containerPort: 3000
+        envFrom:
+        - secretRef:
+            name: db-secret
