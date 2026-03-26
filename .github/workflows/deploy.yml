@@ -46,8 +46,15 @@ jobs:
         --region $AWS_REGION \
         --name ${{ secrets.EKS_CLUSTER_NAME }}
 
-    - name: Deploy to EKS
+    - name: Replace Image
       run: |
-        sed -i "s|IMAGE_PLACEHOLDER|${{ secrets.ECR_REPOSITORY }}:$IMAGE_TAG|g" deployment.yml
-        kubectl apply -f deployment.yml
-        kubectl apply -f service.yml
+        sed -i "s|IMAGE_PLACEHOLDER|${{ secrets.ECR_REPO }}:${{ github.sha }}|g" k8s/deployment.yaml
+
+    - name: Deploy Secrets
+      run: |
+         kubectl apply -f k8s/external-secret.yaml
+
+    - name: Deploy App
+    run: |
+        kubectl apply -f k8s/deployment.yaml
+        kubectl apply -f k8s/service.yaml
