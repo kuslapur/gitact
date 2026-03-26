@@ -7,7 +7,8 @@ on:
 
 env:
   AWS_REGION: ${{ secrets.AWS_REGION }}
-  ECR_REPOSITORY: 470224090978.dkr.ecr.ap-south-1.amazonaws.com/helm-repo
+  ECR_REGISTRY: 470224090978.dkr.ecr.ap-south-1.amazonaws.com
+  ECR_REPOSITORY: helm-repo
 
 jobs:
   deploy:
