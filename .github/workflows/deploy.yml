@@ -48,7 +48,7 @@ jobs:
 
     - name: Replace Image
       run: |
-        sed -i "s|IMAGE_PLACEHOLDER|${{ secrets.ECR_REPO }}:${{ github.sha }}|g" k8s/deployment.yaml
+        sed -i "s|IMAGE_PLACEHOLDER|${{ secrets.ECR_REPO }}:${{ github.sha }}|g" deployment.yaml
 
     - name: Deploy Secrets
       run: |
