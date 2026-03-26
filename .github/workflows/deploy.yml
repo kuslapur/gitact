@@ -55,6 +55,6 @@ jobs:
          kubectl apply -f k8s/external-secret.yaml
 
     - name: Deploy App
-    run: |
+      run: |
         kubectl apply -f k8s/deployment.yaml
         kubectl apply -f k8s/service.yaml
